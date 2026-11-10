@@ -1,0 +1,29 @@
+name: UAT ескертуі
+description: Қабылдау тестілеуі кезінде тапсырыс беруші тапқан ескерту
+labels: ["uat"]
+body:
+  - type: input
+    id: scenario
+    attributes: {label: UAT сценарий (мысалы UAT-05)}
+    validations: {required: true}
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Түрі
+      options: [Ақау, Жақсарту ("мынаны да қосуға бола ма"), Түсініксіздік]
+    validations: {required: true}
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options: [Blocker, Critical, Major, Minor]
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Басымдық
+      options: [P1 - дереу, P2 - осы Sprint, P3 - бэклог]
+    validations: {required: true}
+  - type: textarea
+    id: desc
+    attributes: {label: Сипаттама және дәлел (скриншот)}
+    validations: {required: true}
