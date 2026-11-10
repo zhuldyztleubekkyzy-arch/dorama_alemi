@@ -1,0 +1,24 @@
+name: Инцидент
+description: Қызмет бұзылған немесе іркіліс болған жағдайды тіркеу (DORA MTTR үшін)
+labels: ["incident"]
+body:
+  - type: input
+    id: started
+    attributes: {label: Басталған уақыты (UTC+5)}
+    validations: {required: true}
+  - type: dropdown
+    id: sev
+    attributes:
+      label: Деңгейі
+      options: [SEV1 - қызмет толық тоқтады, SEV2 - негізгі функция бұзылды, SEV3 - шағын ықпал]
+    validations: {required: true}
+  - type: input
+    id: commander
+    attributes: {label: Incident commander (рөлі/аты)}
+  - type: textarea
+    id: impact
+    attributes: {label: Ықпалы және белгілері}
+    validations: {required: true}
+  - type: textarea
+    id: actions
+    attributes: {label: Қабылданған әрекеттер (хронология)}
