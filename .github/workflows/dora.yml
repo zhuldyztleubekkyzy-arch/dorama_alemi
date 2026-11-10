@@ -1,0 +1,28 @@
+name: DORA dashboard
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"   # әр дүйсенбі 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+
+jobs:
+  dora:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests matplotlib
+      - run: python tools/dora_metrics.py --repo ${{ github.repository }} --days 90 --out dora-out
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dora-dashboard
+          path: dora-out/

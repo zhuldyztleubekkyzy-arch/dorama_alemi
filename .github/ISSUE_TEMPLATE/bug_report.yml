@@ -1,0 +1,30 @@
+name: Ақау (bug)
+description: Қосымшадағы ақауды тіркеу
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes: {label: Қосымша нұсқасы (мысалы v0.2.0), }
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity (ақаудың ауырлығы)
+      options: [Blocker, Critical, Major, Minor]
+    validations: {required: true}
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Басымдық
+      options: [P1 - дереу, P2 - осы Sprint, P3 - бэклог]
+    validations: {required: true}
+  - type: textarea
+    id: steps
+    attributes: {label: Қайталау қадамдары}
+    validations: {required: true}
+  - type: textarea
+    id: expected
+    attributes: {label: Күтілетін және нақты нәтиже}
+    validations: {required: true}
+  - type: input
+    id: found
+    attributes: {label: Қай кезеңде табылды (әзірлеу / тест / UAT / пайдалану)}
